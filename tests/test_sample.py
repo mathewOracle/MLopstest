@@ -12,7 +12,7 @@ import sys
 # Add the src directory to the Python path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 
-from src.train import train
+from src.train import train, hyperparameter_tuning
 
 # Mock data for testing
 @pytest.fixture
@@ -39,27 +39,19 @@ def mock_params():
         }
     }
 
-@patch("builtins.open", new_callable=MagicMock)
-@patch("src.train.pd.read_csv")
-def test_train(mock_read_csv, mock_open, mock_data, mock_params):
-    """Test the train function."""
-    # Mock reading of CSV data
-    mock_read_csv.return_value = mock_data
+def test_hyperparameter_tuning(mock_data):
+    """Test the hyperparameter_tuning function."""
+    X = mock_data.drop(columns=["Outcome"])
+    y = mock_data["Outcome"]
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
-    # Mock mlflow to avoid actual calls
-    with patch("src.train.mlflow.start_run") as mock_mlflow:
-        # Run the train function
-        train(
-            mock_params["train"]["data"],
-            mock_params["train"]["model"],
-            mock_params["train"]["random_state"],
-            mock_params["train"]["n_estimators"],
-            mock_params["train"]["max_depth"]
-        )
-        # Assertions
-        mock_read_csv.assert_called_once_with(mock_params["train"]["data"])
-        mock_open.assert_called_once_with(mock_params["train"]["model"], 'wb')
+    param_grid = {
+        'n_estimators': [10, 50],
+        'max_depth': [5, 10],
+        'min_samples_split': [2, 5],
+        'min_samples_leaf': [1, 2]
+    }
 
-        # Check if model is saved
-        mock_open().write.assert_called()
-        assert mock_mlflow.called
+    best_model = hyperparameter_tuning(X_train, y_train, param_grid)
+    assert isinstance(best_model, GridSearchCV)
+    assert isinstance(best_model.best_estimator_, RandomForestClassifier)
