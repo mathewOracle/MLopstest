@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/deab66c4a4a544c5bc17ba282d416e42/artifacts
+end_time: 1737783889476
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: deab66c4a4a544c5bc17ba282d416e42
+run_name: clean-dog-451
+run_uuid: deab66c4a4a544c5bc17ba282d416e42
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737783889308
+status: 4
+tags: []
+user_id: bachutha

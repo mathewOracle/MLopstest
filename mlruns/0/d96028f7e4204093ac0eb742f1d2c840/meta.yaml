@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/d96028f7e4204093ac0eb742f1d2c840/artifacts
+end_time: 1737783984438
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d96028f7e4204093ac0eb742f1d2c840
+run_name: rumbling-seal-699
+run_uuid: d96028f7e4204093ac0eb742f1d2c840
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737783960511
+status: 3
+tags: []
+user_id: bachutha
