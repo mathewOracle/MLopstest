@@ -47,7 +47,7 @@ def test_train(mock_read_csv, mock_open, mock_data, mock_params):
     mock_read_csv.return_value = mock_data
 
     # Mock mlflow to avoid actual calls
-    with patch("your_script_name.mlflow.start_run") as mock_mlflow:
+    with patch("src.train.mlflow.start_run") as mock_mlflow:
         # Run the train function
         train(
             mock_params["train"]["data"],
