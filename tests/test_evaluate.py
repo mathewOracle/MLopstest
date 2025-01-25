@@ -2,6 +2,8 @@ import pytest
 import pandas as pd
 from unittest.mock import patch, mock_open, MagicMock
 from src.evaluate import evaluate
+import warnings
+warnings.filterwarnings("ignore", category=Warning)
 
 @pytest.fixture
 def mock_data():
