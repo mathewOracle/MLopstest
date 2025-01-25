@@ -5,6 +5,7 @@ from src.evaluate import evaluate
 import warnings
 warnings.filterwarnings("ignore", category=Warning)
 
+
 @pytest.fixture
 def mock_data():
     """Fixture to provide mock dataset."""
