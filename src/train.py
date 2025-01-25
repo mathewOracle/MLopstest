@@ -54,6 +54,7 @@ def train(data_path, model_path, random_state, n_estimators, max_depth):
         ## predict and evaluate the model
 
         y_pred=best_model.predict(X_test)
+
         accuracy=accuracy_score(y_test,y_pred)
         print(f"Accuracy:{accuracy}")
 
@@ -86,6 +87,8 @@ def train(data_path, model_path, random_state, n_estimators, max_depth):
         pickle.dump(best_model,open(filename,'wb'))
 
         print(f"Model saved to {model_path}")
+
+    return best_model, grid_search.best_params_, accuracy, grid_search.cv_results_
 
 if __name__=="__main__":
     train(params['data'],params['model'],params['random_state'],params['n_estimators'],params['max_depth'])
