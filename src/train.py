@@ -11,6 +11,7 @@ from urllib.parse import urlparse
 
 import mlflow
 
+## sample ml flow url
 os.environ['MLFFLOW_TRACKING_URI'] = "http://127.0.0.1:5000"
 
 def hyperparameter_tuning(X_train,y_train,param_grid):
