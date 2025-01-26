@@ -39,3 +39,11 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+    - name: Log in to Docker Hub
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+    - name: Build Docker image
+      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/mlops_assign1:latest .
+
+    - name: Push Docker image
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/mlops_assign1:latest
