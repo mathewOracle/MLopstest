@@ -1,0 +1,36 @@
+data:
+mapRoles: |
+rolearn: arn:aws:iam::018185988195:role/EksCodeBuildKubectlRole
+username: build
+groups:
+    - system:masters
+    rolearn: <ARN of instance role (not instance profile)>
+    username: system:node:{{EC2PrivateDNSName}}
+groups:
+- system:bootstrappers
+- system:nodes
+
+
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: v1
+data:
+  mapRoles: |
+    - groups:
+        - system:masters
+        rolearn: arn:aws:iam::961428636954:role/EksCodeBuildKubectlRole
+        username: build
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::961428636954:role/eksctl-eksbitsassign1-nodegroup-ek-NodeInstanceRole-xgwLX4oTuAER
+      username: system:node:{{EC2PrivateDNSName}}
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2025-01-26T05:22:58Z"
+  name: aws-auth
+  namespace: kube-system
+  resourceVersion: "2659"
+  uid: 3949421d-fb8d-4e98-a79d-93d3889c6896
