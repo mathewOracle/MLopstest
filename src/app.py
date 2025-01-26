@@ -56,7 +56,8 @@ def predict_diabetes():
     # Prepare the response
     response = {
         "Prediction": outcome,
-        "Confidence": confidence
+        "Confidence": confidence,
+        "version":"1.1"
     }
 
     return jsonify(response), 200
