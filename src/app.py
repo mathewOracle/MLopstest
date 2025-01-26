@@ -10,6 +10,7 @@ app = Flask(__name__)
 
 pkl_file_path = os.getenv("PKL_FILE_PATH")
 # added a comment
+# another comment
 # Load parameters from params.yaml
 params = yaml.safe_load(open("params.yaml"))["predict"]
 
