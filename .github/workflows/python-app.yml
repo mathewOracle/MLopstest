@@ -71,5 +71,5 @@ jobs:
         aws-region: ${{secrets.AWS_REGION}}
       
     - name: Configure kube config
-        aws eks update-kubeconfig --name eksbitsassign1 --region us-east-1
+      run: aws eks update-kubeconfig --name eksbitsassign1 --region us-east-1
        
