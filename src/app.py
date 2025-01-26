@@ -27,7 +27,7 @@ def ping():
 @app.route('/mlops/predict_diabetes', methods=['POST'])
 
 def predict_diabetes():
-
+    # adding a comment
     # Get the sentence from the POST request
     test_data = request.get_json()
 
