@@ -15,8 +15,21 @@ pkl_file_path = os.getenv("PKL_FILE_PATH")
 params = yaml.safe_load(open("params.yaml"))["predict"]
 
 
+@app.route('/', methods=['GET'])
+def healthCheck():
+    # Prepare the response
+    print("health check status")
+    response = {
+        "status": "Success",
+        "server_time": datetime.now()
+    }
+
+    return jsonify(response), 200
+
+
 @app.route('/mlops/ping', methods=['GET'])
 def ping():
+    print("ping check")
     # Prepare the response
     response = {
         "status": "Success",
