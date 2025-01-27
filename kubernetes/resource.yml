@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: mlopstest
-        image: us-central1-docker.pkg.dev/mlopsbits/gcp-docker-repo/mlopstest:latest
+        image: us-central1-docker.pkg.dev/{{PROJECTID}}/gcp-docker-repo/mlopstest:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 5050
