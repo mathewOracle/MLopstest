@@ -59,14 +59,10 @@ jobs:
         export_default_credentials: true
         
     - name: Log in to Docker Hub
-      run: gcloud auth configure-docker us-central1-docker.pkg.dev
-
-    - name: Build Docker image
-      run: docker build -t us-central1-docker.pkg.dev/${{ secrets.GOOGLE_PROJECTID }}/gcp-docker-repo/mlopstest:latest .
-
-    - name: Push Docker image
-      run: docker push us-central1-docker.pkg.dev/${{ secrets.GOOGLE_PROJECTID }}/gcp-docker-repo/mlopstest:latest
-
+      run: |
+        gcloud auth configure-docker us-central1-docker.pkg.dev
+        docker build -t us-central1-docker.pkg.dev/${{ secrets.GOOGLE_PROJECTID }}/gcp-docker-repo/mlopstest:latest .
+        docker push us-central1-docker.pkg.dev/${{ secrets.GOOGLE_PROJECTID }}/gcp-docker-repo/mlopstest:latest
 
   deploy:
     runs-on: ubuntu-latest
