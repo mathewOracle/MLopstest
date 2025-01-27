@@ -81,10 +81,6 @@ jobs:
         install_components: 'gke-gcloud-auth-plugin'
         export_default_credentials: true
 
-    - name: Replace placeholders in kubernetes resource.yml
-      run: |
-        sed -i 's/{{PROJECTID}}/${{ secrets.GOOGLE_PROJECTID }}/g' kubernetes/resource.yml
-
     - name: deploy to gke
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECTID }}
